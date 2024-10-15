@@ -1,7 +1,8 @@
 import axios from "axios";
+import { API_URI } from "./constants";
 
 const axiosInstance = axios.create({
-    baseURL: "https://whatdidilearn.vercel.app",
+    baseURL: API_URI,
     headers: {
         "Content-Type": "application/json",
     },

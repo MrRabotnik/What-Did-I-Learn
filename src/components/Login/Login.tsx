@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "./Login.scss";
-import axiosInstance from "../../utils/api";
+import axiosInstance from "../../utils/axios.interceptors";
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState("");

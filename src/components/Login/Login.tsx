@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Login.scss";
 
 import IMAGES from "../../utils/images";
-import axiosInstance from "../../utils/axios.interceptors";
+import axiosInstance from "../../utils/axios.interceptor";
 
 export default function Login() {
     const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import ROUTES, { ADMIN_ROUTES } from "./utils/routes";
-import axiosInstance from "./utils/axios.interceptors";
+import axiosInstance from "./utils/axios.interceptor";
 import Login from "./components/Login/Login";
 import { RiseLoader } from "react-spinners";
 import { ToastContainer } from "react-toastify";

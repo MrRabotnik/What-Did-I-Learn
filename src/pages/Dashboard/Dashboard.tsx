@@ -1,8 +1,9 @@
 import React from "react";
 import "./Dashboard.scss";
+import { asciiArt } from "../../utils/asciiArt";
 
 const Dashboard = () => {
-    return <div>Dashboard</div>;
+    return <pre className="welcome">{asciiArt}</pre>;
 };
 
 export default Dashboard;

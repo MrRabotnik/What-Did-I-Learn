@@ -1,0 +1,89 @@
+@import "../../utils/constants.scss";
+
+.aside-header {
+    width: 270px;
+    min-width: 270px;
+    max-width: 270px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px;
+
+        a {
+            img {
+                width: 80px;
+                height: auto;
+            }
+        }
+    }
+
+    nav {
+        overflow: auto;
+        a {
+            text-decoration: none;
+            color: black;
+
+            .nav-item-container {
+                display: flex;
+                align-items: center;
+                padding: 0 20px;
+
+                .image-container {
+                    padding: 0 10px;
+
+                    img {
+                        width: 30px;
+                        height: auto;
+                    }
+                }
+
+                p {
+                }
+
+                &:hover {
+                    background-color: $nav-item-hover;
+                    transition: 0.2s;
+                    cursor: pointer;
+                }
+
+                &.active {
+                    background-color: $nav-item-hover;
+                }
+            }
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .log-out-container {
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        border-top: 1px solid rgb(214, 210, 214);
+
+        .image-container {
+            padding: 0 10px;
+
+            img {
+                width: 30px;
+                height: auto;
+            }
+        }
+
+        &:hover {
+            background-color: $nav-item-hover;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+    }
+}

@@ -17,7 +17,9 @@ function App() {
     const [pending, setPending] = useState(false);
 
     useEffect(() => {
-        if (pathname === "/login") return;
+        if (pathname === "/dashboard/login") return;
+        if (!pathname.startsWith("/dashboard")) return;
+
         setPending(true);
 
         async function fetchData() {

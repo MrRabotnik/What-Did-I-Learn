@@ -25,7 +25,7 @@ axiosInstance.interceptors.response.use(
     (error) => {
         if (!error.response || error.response?.status === 401) {
             localStorage.removeItem("access_token");
-            window.location.href = "dashboard/login";
+            window.location.href = "/dashboard/login";
             return;
         }
 

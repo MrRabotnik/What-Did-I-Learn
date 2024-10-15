@@ -45,7 +45,7 @@ function App() {
                 theme="light"
             />
 
-            {pathname === "dashboard/login" ? (
+            {pathname === "/dashboard/login" ? (
                 <Routes>
                     <Route
                         path={"dashboard/login"}

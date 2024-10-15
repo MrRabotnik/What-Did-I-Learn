@@ -17,7 +17,7 @@ const ROUTES = [
 
 export const ADMIN_ROUTES = [
     {
-        path: "/dashboard//login",
+        path: "/dashboard/login",
         element: <Login />,
     },
     {

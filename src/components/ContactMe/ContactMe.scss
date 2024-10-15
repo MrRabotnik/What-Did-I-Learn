@@ -1,0 +1,83 @@
+@import "../../utils/constants.scss";
+
+.contact-us-section {
+    .edit-modal-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .edit-modal {
+            width: 50%;
+            max-height: 90%;
+            overflow: auto;
+            background-color: white;
+            border-radius: 20px;
+
+            .close-modal {
+                padding: 0 20px;
+                text-align: end;
+
+                img {
+                    cursor: pointer;
+                }
+            }
+
+            .container {
+                padding: 20px 40px;
+                padding-top: 0;
+
+                h3 {
+                    text-align: center;
+                }
+
+                .tabs-container {
+                    display: flex;
+
+                    .tab {
+                        border-bottom: 1px solid transparent;
+                        padding: 10px 20px;
+                        cursor: pointer;
+
+                        &.active {
+                            border-bottom: 1px solid black;
+                        }
+                    }
+                }
+
+                .quill {
+                    margin: 20px 0;
+                }
+
+                .button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #23232133;
+
+        h2 {
+            font-size: 20px;
+        }
+
+        .image-container {
+            img {
+                width: 30px;
+                height: auto;
+                cursor: pointer;
+            }
+        }
+    }
+}

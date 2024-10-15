@@ -1,0 +1,93 @@
+Week 1: Deep Dive into JavaScript (under the hood)
+Day 1-2: JavaScript Fundamentals (Advanced Concepts)
+
+Closures, Hoisting, and Scope: Understand how the JS engine handles closures and hoisting internally.
+Execution Context and Call Stack: Learn how JS code is executed and how the call stack operates.
+Event Loop & Async Programming:
+Explore how the event loop, microtasks, and macrotasks work.
+Learn about Promises, async/await, and their internal mechanisms.
+Resources: MDN: Asynchronous JavaScript
+Day 3-4: Memory Management and JavaScript Performance
+
+Memory Allocation and Garbage Collection: How variables are stored and cleaned up in JS.
+Prototypes & Inheritance: Learn how JavaScript uses prototypes and how inheritance is implemented internally.
+The V8 Engine (Chrome): Get an overview of the V8 engine and how JS is compiled.
+Resources: V8 Blog
+Day 5-6: Advanced JavaScript Concepts
+
+Event Bubbling, Capturing, and Delegation: How JS event handling works.
+Module Systems (ES6 Modules, CommonJS): Learn how JavaScript handles module imports/exports.
+Error Handling: Understand try-catch, async error handling, and common patterns.
+Performance Optimization: Learn common performance pitfalls in JavaScript.
+Day 7: Coding Challenges and Application
+
+Solve coding challenges related to closures, async programming, and event handling.
+Practice on platforms like LeetCode, HackerRank.
+Week 2: React Under the Hood
+Day 1-2: React Component Lifecycle & Rendering
+
+Understand React’s component lifecycle and rendering process.
+Learn how React handles reconciliation and the Virtual DOM.
+Hooks under the hood: How useState, useEffect, and others work.
+Resources: React Documentation
+Day 3-4: React Performance Optimization
+
+Learn techniques like memoization (React.memo, useMemo, useCallback).
+Profiling React applications using the React Developer Tools.
+Understanding the difference between functional and class components performance-wise.
+Day 5-6: React Concurrent Mode and Fiber Architecture
+
+Understand how React’s Fiber architecture improves rendering performance.
+Learn about concurrent rendering and how React schedules updates.
+Read through React’s official blog posts on Fiber architecture.
+Resources: React Fiber Architecture
+Day 7: Hands-on React Projects
+
+Build a React project from scratch (use Vite for a lightweight setup).
+Implement advanced hooks, error boundaries, and optimization techniques.
+Week 3: Browser Internals and Networking
+Day 1-2: How Browsers Work
+
+Learn the internal workings of a browser (e.g., parsing, rendering, painting).
+Explore the critical rendering path (from HTML to pixels on the screen).
+Resources: How Browsers Work
+Day 3-4: Networking in the Browser
+
+Understand HTTP(S) protocols, request lifecycle, and response caching.
+Dive into CORS, cookies, and headers (security aspects like CSRF, XSS).
+Explore RESTful APIs and how the browser handles networking.
+Tools: Postman
+Day 5-6: Web Performance Optimization
+
+Learn about techniques like lazy loading, compression (gzip/brotli), and service workers.
+Explore tools like Lighthouse and WebPageTest for performance analysis.
+Understand Time to First Byte (TTFB), Content Delivery Networks (CDN), and server-side rendering (SSR).
+Day 7: Hands-on Networking & Performance
+
+Create a React app that fetches data from an API and focuses on optimizing the loading time (use Chrome DevTools to analyze).
+Simulate different network conditions (throttling) and optimize accordingly.
+Week 4: Mock Interviews and Projects
+Day 1-2: Mock Interviews and Coding Challenges
+
+Practice mock interviews focusing on JavaScript, React, and browser/networking concepts.
+Solve algorithmic challenges (focus on array, string manipulation, and async operations).
+Day 3-4: Build a Full-Stack App
+
+Create a small React app that fetches data from an external API (e.g., weather, movie database).
+Focus on good coding practices, performance optimization, and networking.
+Day 5-6: Review and Strengthen Weak Areas
+
+Review concepts that you found challenging over the last few weeks.
+Revisit coding challenges and mock interviews to refine your responses.
+Day 7: Rest and Final Prep
+
+Light review of major concepts.
+Go over interview questions focusing on JavaScript and React internals.
+Additional Resources:
+JavaScript:
+"You Don't Know JS" (Book series by Kyle Simpson)
+JavaScript.info
+React:
+"React Docs" and "The Road to React" (Book by Robin Wieruch)
+Browser & Networking:
+"High Performance Browser Networking" by Ilya Grigorik

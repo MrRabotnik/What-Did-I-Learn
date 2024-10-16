@@ -1,0 +1,46 @@
+@import "../../utils/constants.scss";
+
+.delete-modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 10;
+
+    .delete-modal {
+        width: 40%;
+        border-radius: 20px;
+        background-color: white;
+        padding: 20px;
+
+        .close-modal {
+            text-align: end;
+
+            img {
+                cursor: pointer;
+            }
+        }
+        h2 {
+            text-align: center;
+        }
+
+        p {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+
+            button {
+                width: 50%;
+            }
+        }
+    }
+}

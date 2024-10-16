@@ -1,0 +1,28 @@
+@import "../../utils/constants.scss";
+
+.row {
+    margin: 20px 0;
+
+    & > div {
+        input {
+            width: 100%;
+            padding: 10px 0;
+            border: none;
+            outline: none;
+            border-bottom: 1px solid #00000061;
+            font-size: 18px;
+        }
+    }
+
+    .subcategory-input-container {
+        & > div {
+            input {
+                width: 100%;
+                padding: 10px 0;
+                border: none;
+                outline: none;
+                border-bottom: 1px solid #00000061;
+            }
+        }
+    }
+}

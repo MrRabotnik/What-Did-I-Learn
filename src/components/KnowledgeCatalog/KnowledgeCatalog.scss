@@ -1,0 +1,143 @@
+@import "../../utils/constants.scss";
+
+.articles-section {
+    .header {
+        border-bottom: 1px solid #23232133;
+
+        h2 {
+            font-size: 20px;
+            text-align: center;
+        }
+    }
+
+    .add-new-category-container {
+        display: flex;
+        justify-content: flex-end;
+        margin: 10px 0;
+    }
+
+    .search-sort-container {
+        display: flex;
+        flex-wrap: wrap;
+        // height: 55px;
+        background-color: #f9fafb;
+        padding: 10px;
+        // overflow: hidden;
+
+        &:hover {
+            overflow: visible;
+            height: auto;
+        }
+
+        .input-container {
+            margin: 0 0 10px 10px;
+        }
+
+        .drop-down-wrapper {
+            background-color: white;
+            border-radius: 32px;
+            min-width: 150px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+
+            .title-and-arrow-wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 32px;
+                height: 100%;
+                padding: 0 20px;
+
+                img {
+                    margin-left: 5px;
+                }
+            }
+
+            .scroll-div {
+                width: max-content;
+
+                .search-wrapper {
+                    div {
+                        box-sizing: border-box;
+                    }
+                }
+            }
+        }
+    }
+
+    .table-container {
+        width: 100%;
+        overflow: auto;
+
+        .table {
+            border-collapse: collapse;
+            overflow: auto;
+            color: #667085;
+
+            tr {
+                border-bottom: 1px solid #eaecf0;
+
+                th {
+                    text-align: start;
+                    padding: 10px;
+
+                    &.name {
+                        min-width: 180px;
+
+                        & > div {
+                            display: flex;
+                            align-items: center;
+                            img {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+
+                    &.category {
+                        min-width: 150px;
+
+                        & > div {
+                            display: flex;
+                            align-items: center;
+                            img {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+
+                    &.date {
+                        min-width: 150px;
+
+                        & > div {
+                            display: flex;
+                            align-items: center;
+                            img {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+
+                    &.action {
+                        min-width: 100px;
+                    }
+                }
+
+                td {
+                    padding: 20px 10px;
+
+                    .preview-and-name {
+                        display: flex;
+                        align-items: center;
+                        cursor: pointer;
+
+                        img {
+                            width: 40px;
+                            height: auto;
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

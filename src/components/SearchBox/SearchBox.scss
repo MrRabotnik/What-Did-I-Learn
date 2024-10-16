@@ -1,0 +1,28 @@
+@import "../../utils/constants.scss";
+
+.input-container {
+    display: flex;
+    align-items: center;
+    border-radius: 32px;
+    border: 1px solid #d8d8d899;
+    background-color: white;
+
+    input {
+        width: 200px;
+        border: none;
+        outline: none;
+        padding: 10px 5px;
+        background-color: transparent;
+    }
+
+    .search-icon-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10px;
+
+        img {
+            cursor: pointer;
+        }
+    }
+}

@@ -7,6 +7,7 @@ import KnowledgeCatalog from "../components/KnowledgeCatalog/KnowledgeCatalog";
 import AboutMe from "../components/AboutMe/AboutMe";
 import ContactMe from "../components/ContactMe/ContactMe";
 import Settings from "../components/Settings/Settings";
+import Tags from "../components/Tags/Tags";
 
 const ROUTES = [
     {
@@ -41,6 +42,10 @@ export const ADMIN_ROUTES = [
         element: <ContactMe />,
     },
     {
+        path: "/dashboard/tags",
+        element: <Tags />,
+    },
+    {
         path: "/dashboard/settings",
         element: <Settings />,
     },
@@ -65,6 +70,11 @@ export const HEADER_ROUTES = [
         path: "/dashboard/contact-me",
         src: IMAGES.contactUsIcon,
         label: "Contact me",
+    },
+    {
+        path: "/dashboard/tags",
+        src: IMAGES.swapVertical,
+        label: "Tags",
     },
     {
         path: "/dashboard/settings",

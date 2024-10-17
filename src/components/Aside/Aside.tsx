@@ -25,7 +25,7 @@ const Aside = () => {
             .get("/tags")
             .then((response) => {
                 if (response.data.success) {
-                    setTags([{ name: "All", _id: "randooooom" }, ...response.data.data.docs]);
+                    setTags([{ name: "All", _id: "All" }, ...response.data.data.docs]);
                 }
             })
             .catch((error) => {

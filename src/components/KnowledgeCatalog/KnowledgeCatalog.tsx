@@ -71,7 +71,7 @@ const KnowledgeCatalog = () => {
         const pageQuery = `page=${selectedPage}`;
         const limitQuery = `&limit=${itemsPerPage}`;
         const categoryQuery =
-            selectedCategory._id && selectedCategory.name !== "Բոլորը" ? `&category_id=${selectedCategory._id}` : "";
+            selectedCategory._id && selectedCategory.name !== "All" ? `&category_id=${selectedCategory._id}` : "";
         const orderByQuery = orderBy.length ? `&sort_by=${orderBy}` : "";
         const orderTypeQuery = `&sort_type=${orderType}`;
         const searchTermQuery = submitedSearchTerm ? `&search_term=${submitedSearchTerm}` : "";

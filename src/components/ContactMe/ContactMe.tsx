@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axiosInstance from "../../utils/axios.interceptor";
 import Modal from "../../components/Modal/Modal";
 import { RiseLoader } from "react-spinners";
-import checkValidation from "../../validations/terms&privacy&contact.validation";
+import checkValidation from "../../validations/contactMe.validation";
 
 const ContactMe = () => {
     const [tabs, setTabs] = useState([

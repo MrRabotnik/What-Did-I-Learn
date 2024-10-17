@@ -10,8 +10,8 @@ import "react-toastify/dist/ReactToastify.css";
 import axiosInstance from "../../utils/axios.interceptor";
 import Modal from "../../components/Modal/Modal";
 import { RiseLoader } from "react-spinners";
-import checkValidation from "../../validations/article.validation";
 import { ASSETS_URI } from "../../utils/constants";
+import checkValidation from "../../validations/aboutMe.validation";
 
 const AboutMe = () => {
     const [tabs, setTabs] = useState([

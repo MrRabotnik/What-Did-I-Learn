@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import axiosInstance from "../../utils/axios.interceptor";
 import Aside from "../../components/Aside/Aside";
 import SearchDebounce from "../../utils/searchDebounce";
 import "./Home.scss";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { RiseLoader } from "react-spinners";
+import ReactPaginate from "react-paginate";
 
 interface Article {
     name: string;
@@ -15,27 +16,39 @@ interface Article {
 
 const Home = () => {
     const navigate = useNavigate();
-    const location = useLocation();
 
-    const queryParams = new URLSearchParams(location.search);
-    const categoryFilter = queryParams.get("category_id");
+    const [searchParams] = useSearchParams();
+
+    const categoryFilter: any = searchParams.get("category_id") || "";
+
+    const page: any = searchParams.get("page") || 1;
+    const itemsPerPage = 10;
+    const [selectedPage, setSelectedPage] = useState(page ? parseInt(page) : 1);
+    const [totalPages, setTotalPages] = useState(0);
 
     const [articles, setArticles] = useState<Article[]>([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [finalSearchTerm, setFinalSearchTerm] = useState("");
     const [pending, setPending] = useState(true);
 
-    useEffect(() => {
-        const searchQuery = finalSearchTerm.length ? `search_term=${finalSearchTerm}` : "";
-        const categoryQuery = categoryFilter ? `&category_id=${categoryFilter}` : "";
+    const generateQuery = useCallback(() => {
+        const pageQuery = `page=${selectedPage}`;
+        const limitQuery = `&limit=${itemsPerPage}`;
+        const categoryQuery = categoryFilter && categoryFilter !== "All" ? `&category_id=${categoryFilter}` : "";
+        const searchTermQuery = finalSearchTerm ? `&search_term=${finalSearchTerm}` : "";
 
-        const query = `${searchQuery}${categoryQuery}`;
+        return `${pageQuery}${limitQuery}${categoryQuery}${searchTermQuery}`;
+    }, [selectedPage, categoryFilter, finalSearchTerm]);
+
+    useEffect(() => {
+        const query = generateQuery();
 
         axiosInstance
             .get(`/articles/search?${query}`)
             .then((response) => {
                 if (response.data.success) {
                     setArticles(response.data.data.docs);
+                    setTotalPages(response.data.data.totalPages);
                 }
             })
             .catch((error) => {
@@ -44,7 +57,12 @@ const Home = () => {
             .finally(() => {
                 setPending(false);
             });
-    }, [categoryFilter, finalSearchTerm]);
+    }, [categoryFilter, finalSearchTerm, generateQuery]);
+
+    const handlePageClick = (e: any) => {
+        setSelectedPage(e.selected + 1);
+        navigate(`?page=${e.selected + 1}`);
+    };
 
     const debouncedSearch = useRef(SearchDebounce(setFinalSearchTerm, 1000)).current;
 
@@ -98,6 +116,23 @@ const Home = () => {
                         <p>No articles found</p>
                     )}
                 </div>
+                {totalPages > 1 && (
+                    <div className="pagination">
+                        <ReactPaginate
+                            breakLabel="..."
+                            nextLabel=">"
+                            onPageChange={(e) => handlePageClick(e)}
+                            pageRangeDisplayed={3}
+                            pageCount={totalPages}
+                            previousLabel="<"
+                            renderOnZeroPageCount={null}
+                            activeClassName={"selected-page"}
+                            forcePage={selectedPage - 1 > totalPages ? 0 : selectedPage - 1}
+                            previousClassName={selectedPage === 1 ? "disabled" : ""}
+                            nextClassName={selectedPage === totalPages ? "disabled" : ""}
+                        />
+                    </div>
+                )}
             </div>
         </div>
     );

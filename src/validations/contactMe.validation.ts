@@ -1,13 +1,8 @@
 import { toast } from "react-toastify";
 
-const checkValidation = (text1, arr, text2) => {
+const checkValidation = (text1: string, text2: string) => {
     if (!text1.length) {
         toast.error("Name is empty");
-        return false;
-    }
-
-    if (!arr.length) {
-        toast.error("Tags is empty");
         return false;
     }
 

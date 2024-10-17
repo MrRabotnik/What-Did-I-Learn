@@ -27,13 +27,8 @@ interface Tag {
     _id: string;
 }
 
-const sampleData: Knowledge[] = [
-    { name: "React Basics", category: "Frontend", date: "2021-06-12", description: "Learning React" },
-    { name: "Node.js Fundamentals", category: "Backend", date: "2020-10-04", description: "Backend development" },
-];
-
 const KnowledgeCatalog = () => {
-    const [knowledgeItems, setKnowledgeItems] = useState<Knowledge[]>(sampleData);
+    const [knowledgeItems, setKnowledgeItems] = useState<Knowledge[]>([]);
 
     const navigate = useNavigate();
 
@@ -106,7 +101,7 @@ const KnowledgeCatalog = () => {
                 const [categoriesRes] = await Promise.all([axiosInstance.get(`/tags`)]);
 
                 if (categoriesRes.data.success) {
-                    const arr = categoriesRes.data.data;
+                    const arr = categoriesRes.data.data.docs;
                     const categories = [{ name: "All" }, ...arr];
 
                     const options = arr.map((tag: any) => ({
@@ -282,13 +277,11 @@ const KnowledgeCatalog = () => {
                                     />
                                 </div>
                             </th>
-                            <th className="description">Text</th>
                         </tr>
                     </thead>
                     <tbody>
                         {knowledgeItems?.length ? (
                             knowledgeItems.map((item, index) => {
-                                console.log(item);
                                 return (
                                     <ArticleItem
                                         key={index}

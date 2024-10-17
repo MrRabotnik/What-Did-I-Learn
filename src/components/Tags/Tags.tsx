@@ -21,7 +21,7 @@ const Tags = () => {
             .then((res) => {
                 const data = res.data;
                 if (data.success) {
-                    setTags(data.data);
+                    setTags(data.data.docs);
                 }
             })
             .catch((err) => {

@@ -44,6 +44,7 @@ const Home = () => {
     );
 
     useEffect(() => {
+        setPending(true);
         setArticles([]);
         const query = generateQuery(selectedPage);
 
@@ -88,7 +89,14 @@ const Home = () => {
                 </div>
 
                 <div className="articles-container">
-                    {articles?.length > 0 && !pending ? (
+                    {pending ? (
+                        <div className="loader-container">
+                            <RiseLoader
+                                color="#d8d8d8"
+                                size={10}
+                            />
+                        </div>
+                    ) : articles?.length > 0 ? (
                         articles.map((article: Article) => (
                             <div
                                 key={article.name}
@@ -109,13 +117,6 @@ const Home = () => {
                                 </div>
                             </div>
                         ))
-                    ) : pending ? (
-                        <div className="loader-container">
-                            <RiseLoader
-                                color="#d8d8d8"
-                                size={10}
-                            />
-                        </div>
                     ) : (
                         <p>No articles found</p>
                     )}

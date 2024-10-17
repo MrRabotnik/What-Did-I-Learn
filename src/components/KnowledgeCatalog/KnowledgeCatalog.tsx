@@ -166,7 +166,6 @@ const KnowledgeCatalog = () => {
     };
 
     const handleSubmitEdit = () => {
-        console.log(editingName, editingSelectedCategories, editingText);
         const valid = checkValidation(editingName, editingSelectedCategories, editingText);
         if (!valid) return;
 

@@ -22,7 +22,7 @@ const Home = () => {
     const categoryFilter: any = searchParams.get("category_id") || "";
 
     const page: any = searchParams.get("page") || 1;
-    const itemsPerPage = 10;
+    const itemsPerPage = 12;
     const [selectedPage, setSelectedPage] = useState(page ? parseInt(page) : 1);
     const [totalPages, setTotalPages] = useState(0);
 
@@ -31,17 +31,21 @@ const Home = () => {
     const [finalSearchTerm, setFinalSearchTerm] = useState("");
     const [pending, setPending] = useState(true);
 
-    const generateQuery = useCallback(() => {
-        const pageQuery = `page=${selectedPage}`;
-        const limitQuery = `&limit=${itemsPerPage}`;
-        const categoryQuery = categoryFilter && categoryFilter !== "All" ? `&category_id=${categoryFilter}` : "";
-        const searchTermQuery = finalSearchTerm ? `&search_term=${finalSearchTerm}` : "";
+    const generateQuery = useCallback(
+        (page: number) => {
+            const pageQuery = `page=${page}`;
+            const limitQuery = `&limit=${itemsPerPage}`;
+            const categoryQuery = categoryFilter && categoryFilter !== "All" ? `&category_id=${categoryFilter}` : "";
+            const searchTermQuery = finalSearchTerm ? `&search_term=${finalSearchTerm}` : "";
 
-        return `${pageQuery}${limitQuery}${categoryQuery}${searchTermQuery}`;
-    }, [selectedPage, categoryFilter, finalSearchTerm]);
+            return `${pageQuery}${limitQuery}${categoryQuery}${searchTermQuery}`;
+        },
+        [categoryFilter, finalSearchTerm]
+    );
 
     useEffect(() => {
-        const query = generateQuery();
+        setArticles([]);
+        const query = generateQuery(selectedPage);
 
         axiosInstance
             .get(`/articles/search?${query}`)
@@ -57,11 +61,11 @@ const Home = () => {
             .finally(() => {
                 setPending(false);
             });
-    }, [categoryFilter, finalSearchTerm, generateQuery]);
+    }, [categoryFilter, finalSearchTerm, generateQuery, selectedPage]);
 
     const handlePageClick = (e: any) => {
         setSelectedPage(e.selected + 1);
-        navigate(`?page=${e.selected + 1}`);
+        navigate(`?${generateQuery(e.selected + 1)}`);
     };
 
     const debouncedSearch = useRef(SearchDebounce(setFinalSearchTerm, 1000)).current;
@@ -84,7 +88,7 @@ const Home = () => {
                 </div>
 
                 <div className="articles-container">
-                    {articles?.length > 0 ? (
+                    {articles?.length > 0 && !pending ? (
                         articles.map((article: Article) => (
                             <div
                                 key={article.name}

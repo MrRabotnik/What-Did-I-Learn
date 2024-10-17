@@ -4,6 +4,7 @@ import "./ArticleItem.scss";
 
 const ArticleItem = ({ item, setDeleteModalOpen, setDeletingItem, setEditingItem, setEditModalOpen }: any) => {
     return (
+        // Move edit here as a component
         <tr className="article-item">
             <td>{item.name}</td>
             <td>

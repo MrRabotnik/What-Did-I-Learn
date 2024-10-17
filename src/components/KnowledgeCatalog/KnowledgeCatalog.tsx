@@ -165,6 +165,32 @@ const KnowledgeCatalog = () => {
             });
     };
 
+    const handleSubmitEdit = () => {
+        console.log(editingName, editingSelectedCategories, editingText);
+        const valid = checkValidation(editingName, editingSelectedCategories, editingText);
+        if (!valid) return;
+
+        const body = {
+            name: editingName,
+            text: editingText,
+            categories: editingSelectedCategories.map((item: any) => item.value),
+        };
+
+        axiosInstance
+            .put(`/articles/${editingItem._id}`, body)
+            .then((res) => {
+                const data = res.data;
+                if (data.success) {
+                    toast.success(data.message);
+                    setEditModalOpen(false);
+                    setUpdate((prev) => !prev);
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
     const handlePageClick = (e: any) => {
         setSelectedPage(e.selected + 1);
         navigate(`?page=${e.selected + 1}`);
@@ -218,7 +244,7 @@ const KnowledgeCatalog = () => {
                 <Modal
                     title={"Edit"}
                     closeModal={setEditModalOpen}
-                    submitModal={handleSubmit}
+                    submitModal={handleSubmitEdit}
                 >
                     <InputRow
                         label={"Անուն (Հայերեն)"}

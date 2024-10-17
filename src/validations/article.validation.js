@@ -11,7 +11,7 @@ const checkValidation = (text1, arr, text2) => {
         return false;
     }
 
-    if (!text2.length < 12) {
+    if (text2.length < 12) {
         toast.error("Text is empty");
         return false;
     }

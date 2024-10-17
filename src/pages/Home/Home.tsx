@@ -99,7 +99,7 @@ const Home = () => {
                     ) : articles?.length > 0 ? (
                         articles.map((article: Article) => (
                             <div
-                                key={article.name}
+                                key={article._id}
                                 className="article-block"
                                 onClick={() => navigate(`/article/${article._id}`)}
                             >
@@ -108,7 +108,7 @@ const Home = () => {
                                 <div className="article-categories">
                                     {article.categories.map((category: any) => (
                                         <span
-                                            key={category}
+                                            key={category._id}
                                             className="category-tag"
                                         >
                                             {category.name}

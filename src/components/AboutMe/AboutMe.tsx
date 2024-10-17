@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axiosInstance from "../../utils/axios.interceptor";
 import Modal from "../../components/Modal/Modal";
 import { RiseLoader } from "react-spinners";
-import checkValidation from "../../validations/collection&about.validation";
+import checkValidation from "../../validations/article.validation";
 import { ASSETS_URI } from "../../utils/constants";
 
 const AboutMe = () => {

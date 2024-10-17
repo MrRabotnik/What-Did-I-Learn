@@ -2,11 +2,7 @@ import React from "react";
 import IMAGES from "../../utils/images";
 import "./ArticleItem.scss";
 
-import { useNavigate } from "react-router-dom";
-
-const ArticleItem = ({ item, setDeleteModalOpen, setDeletingItem }: any) => {
-    const navigate = useNavigate();
-
+const ArticleItem = ({ item, setDeleteModalOpen, setDeletingItem, setEditingItem, setEditModalOpen }: any) => {
     return (
         <tr className="article-item">
             <td>{item.name}</td>
@@ -26,7 +22,8 @@ const ArticleItem = ({ item, setDeleteModalOpen, setDeletingItem }: any) => {
                     src={IMAGES.editIcon}
                     alt="Edit icon"
                     onClick={() => {
-                        navigate(`/edit-article?id=${item._id}`);
+                        setEditingItem(item);
+                        setEditModalOpen((prev: boolean) => !prev);
                     }}
                 />
                 <img

@@ -14,6 +14,7 @@ import ReactQuill from "react-quill";
 import { toast } from "react-toastify";
 import InputRow from "../InputRow/InputRow";
 import Select, { InputActionMeta } from "react-select";
+import checkValidation from "../../validations/article.validation";
 
 interface Knowledge {
     name: string;
@@ -53,10 +54,16 @@ const KnowledgeCatalog = () => {
     const [submitedSearchTerm, setSubmitedSearchTerm] = useState("");
 
     const [addModalOpen, setAddModalOpen] = useState(false);
+    const [editModalOpen, setEditModalOpen] = useState(false);
     const [name, setName] = useState("");
     const [text, setText] = useState("");
     const [selectedCategories, setSelectedCategories] = useState([]);
 
+    const [editingName, setEditingName] = useState("");
+    const [editingText, setEditingText] = useState("");
+    const [editingSelectedCategories, setEditingSelectedCategories] = useState([]);
+
+    const [editingItem, setEditingItem] = useState<any>({});
     const [deletingItem, setDeletingItem] = useState<any>({});
     const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
@@ -120,9 +127,22 @@ const KnowledgeCatalog = () => {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        if (!editingItem._id) return;
+
+        setEditingName(editingItem.name);
+        const options = editingItem.categories.map((tag: any) => ({
+            value: tag._id,
+            label: tag.name,
+        }));
+
+        setEditingSelectedCategories(options);
+        setEditingText(editingItem.text);
+    }, [editingItem]);
+
     const handleSubmit = () => {
-        // const valid = checkValidation(textArm, textEng);
-        // if (!valid) return;
+        const valid = checkValidation(name, selectedCategories, text);
+        if (!valid) return;
 
         const body = {
             name,
@@ -181,6 +201,48 @@ const KnowledgeCatalog = () => {
                     <ReactQuill
                         value={text}
                         onChange={setText}
+                        placeholder="Description"
+                        modules={{
+                            toolbar: {
+                                container: [
+                                    ["bold", "italic", "underline", "strike", "blockquote"],
+                                    [{ list: "ordered" }, { list: "bullet" }, { indent: "-1" }, { indent: "+1" }],
+                                ],
+                            },
+                        }}
+                    />
+                </Modal>
+            )}
+
+            {editModalOpen && (
+                <Modal
+                    title={"Edit"}
+                    closeModal={setEditModalOpen}
+                    submitModal={handleSubmit}
+                >
+                    <InputRow
+                        label={"Անուն (Հայերեն)"}
+                        value={editingName}
+                        placeholder={"Անուն (Հայերեն)"}
+                        setValue={setEditingName}
+                    />
+
+                    <Select
+                        isMulti
+                        options={categoriesOptions}
+                        value={editingSelectedCategories}
+                        onChange={(val: any) => setEditingSelectedCategories(val)}
+                        placeholder="Select Tags"
+                        inputValue={""}
+                        onInputChange={function (newValue: string, actionMeta: InputActionMeta): void {}}
+                        onMenuOpen={function (): void {}}
+                        onMenuClose={function (): void {}}
+                    />
+
+                    <p>Text</p>
+                    <ReactQuill
+                        value={editingText}
+                        onChange={setEditingText}
                         placeholder="Description"
                         modules={{
                             toolbar: {
@@ -288,6 +350,8 @@ const KnowledgeCatalog = () => {
                                         item={item}
                                         setDeleteModalOpen={setDeleteModalOpen}
                                         setDeletingItem={setDeletingItem}
+                                        setEditingItem={setEditingItem}
+                                        setEditModalOpen={setEditModalOpen}
                                     />
                                 );
                             })

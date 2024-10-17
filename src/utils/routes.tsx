@@ -8,11 +8,16 @@ import AboutMe from "../components/AboutMe/AboutMe";
 import ContactMe from "../components/ContactMe/ContactMe";
 import Settings from "../components/Settings/Settings";
 import Tags from "../components/Tags/Tags";
+import ArticlePage from "../pages/ArticlePage/ArticlePage";
 
 const ROUTES = [
     {
         path: "/",
         element: <Home />,
+    },
+    {
+        path: "/article/:id",
+        element: <ArticlePage />,
     },
     {
         path: "*",

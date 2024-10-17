@@ -1,0 +1,41 @@
+.article-detail {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.article-name {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.article-date {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.article-categories {
+    margin-bottom: 20px;
+    .category-tag {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #00bcd4;
+        color: white;
+        border-radius: 20px;
+        margin-right: 5px;
+        font-size: 0.9rem;
+    }
+}
+
+.article-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+
+    pre {
+        overflow: hidden;
+    }
+}

@@ -25,7 +25,7 @@ const Aside = () => {
             .get("/tags")
             .then((response) => {
                 if (response.data.success) {
-                    setTags([{ name: "All" }, ...response.data.data.docs]);
+                    setTags([{ name: "All", _id: "randooooom" }, ...response.data.data.docs]);
                 }
             })
             .catch((error) => {
@@ -73,15 +73,17 @@ const Aside = () => {
                 {pending ? (
                     <p>Loading...</p>
                 ) : tags.length > 0 ? (
-                    tags.map((tag: Tag) => (
-                        <li
-                            key={tag._id}
-                            className={`tag-item ${tag._id === categoryId ? "selected" : ""}`}
-                            onClick={() => pushQuery(tag._id)}
-                        >
-                            {tag.name}
-                        </li>
-                    ))
+                    tags.map((tag: Tag) => {
+                        return (
+                            <li
+                                key={tag._id}
+                                className={`tag-item ${tag._id === categoryId ? "selected" : ""}`}
+                                onClick={() => pushQuery(tag._id)}
+                            >
+                                {tag.name}
+                            </li>
+                        );
+                    })
                 ) : (
                     <p>No tags found</p>
                 )}

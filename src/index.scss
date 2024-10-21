@@ -6,6 +6,10 @@ body {
     height: 100vh;
 }
 
+#root {
+    height: 100%;
+}
+
 .roboto-regular {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
@@ -15,6 +19,7 @@ body {
 .main {
     display: flex;
     width: 100%;
+    height: 100%;
 
     .wrapper {
         flex-grow: 1;
@@ -89,10 +94,15 @@ body {
     }
 }
 
+.ql-container.ql-snow {
+    min-height: 150px;
+}
+
 .pagination {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 50px;
 
     ul {
         display: flex;

@@ -204,12 +204,13 @@ const KnowledgeCatalog = () => {
                     submitModal={handleSubmit}
                 >
                     <InputRow
-                        label={"Անուն (Հայերեն)"}
+                        label={"Title"}
                         value={name}
-                        placeholder={"Անուն (Հայերեն)"}
+                        placeholder={"Title"}
                         setValue={setName}
                     />
 
+                    <p>Tags</p>
                     <Select
                         isMulti
                         options={categoriesOptions}

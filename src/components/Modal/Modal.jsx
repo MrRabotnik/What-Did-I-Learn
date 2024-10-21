@@ -28,7 +28,7 @@ const Modal = ({ title, closeModal, submitModal, children }) => {
                         className="button"
                         onClick={submitModal}
                     >
-                        Պահպանել
+                        Save
                     </button>
                 </div>
             </div>

@@ -10,7 +10,6 @@ import "react-toastify/dist/ReactToastify.css";
 import axiosInstance from "../../utils/axios.interceptor";
 import Modal from "../../components/Modal/Modal";
 import { RiseLoader } from "react-spinners";
-import { ASSETS_URI } from "../../utils/constants";
 import checkValidation from "../../validations/aboutMe.validation";
 
 const AboutMe = () => {
@@ -23,9 +22,6 @@ const AboutMe = () => {
     const [textEng, setTextEng] = useState("");
     const [editModalOpen, setEditModalOpen] = useState(false);
     const [aboutUs, setAboutUs] = useState("");
-    const [aboutUsImage, setAboutUsImage] = useState("");
-    const [aboutUsImagePreview, setAboutUsImagePreview] = useState("");
-    const [imageChanged, setImageChanged] = useState(false);
 
     const [pending, setPending] = useState(true);
 
@@ -40,8 +36,6 @@ const AboutMe = () => {
                     setAboutUs(data.data.description_arm);
                     setTextArm(data.data.description_arm);
                     setTextEng(data.data.description_eng);
-                    setAboutUsImage(data.data.image);
-                    setAboutUsImagePreview(`${ASSETS_URI}/${data.data.image}`);
                 }
             })
             .catch((err) => {
@@ -66,86 +60,30 @@ const AboutMe = () => {
         setTabs(arr);
     };
 
-    const handleFileChange = (target: any) => {
-        const image = target.files[0];
-        setAboutUsImage(image);
-        setImageChanged((prev) => !prev);
-        if (image) {
-            const reader = new FileReader();
-            reader.onload = function (e: any) {
-                setAboutUsImagePreview(e.target.result);
-            };
-            reader.readAsDataURL(image);
-        }
-    };
-
     const handleSubmit = () => {
-        const valid = checkValidation(textArm, textEng, aboutUsImage);
+        const valid = checkValidation(textArm, textEng);
         if (!valid) return;
 
-        if (imageChanged) {
-            const body = new FormData();
-            body.append("file", aboutUsImage);
+        const body = {
+            description_arm: textArm,
+            description_eng: textEng,
+        };
 
-            axiosInstance
-                .post(`/file/upload`, body)
-                .then((res) => {
-                    const data = res.data;
-
-                    if (!data.key.length) return;
-
-                    const body = {
-                        description_arm: textArm,
-                        description_eng: textEng,
-                        image: data.key,
-                    };
-
-                    axiosInstance
-                        .post(`/about`, body)
-                        .then((res) => {
-                            const data = res.data;
-                            if (data.success) {
-                                toast.success("Տվյալ բաժնի տեքստը հաջողությամբ թարմացվեց:");
-                                setEditModalOpen(false);
-                                setAboutUs(data.data.description_arm);
-                                setTextArm(data.data.description_arm);
-                                setTextEng(data.data.description_eng);
-                                setAboutUsImage(data.data.image);
-                                setAboutUsImagePreview(`${ASSETS_URI}/${data.data.image}`);
-                            }
-                        })
-                        .catch((err) => {
-                            console.log(err);
-                        });
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        } else {
-            const body = {
-                description_arm: textArm,
-                description_eng: textEng,
-                image: aboutUsImage,
-            };
-
-            axiosInstance
-                .post(`/about`, body)
-                .then((res) => {
-                    const data = res.data;
-                    if (data.success) {
-                        toast.success("Տվյալ բաժնի տեքստը հաջողությամբ թարմացվեց:");
-                        setEditModalOpen(false);
-                        setAboutUs(data.data.description_arm);
-                        setTextArm(data.data.description_arm);
-                        setTextEng(data.data.description_eng);
-                        setAboutUsImage(data.data.image);
-                        setAboutUsImagePreview(`${ASSETS_URI}/${data.data.image}`);
-                    }
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        }
+        axiosInstance
+            .post(`/about`, body)
+            .then((res) => {
+                const data = res.data;
+                if (data.success) {
+                    toast.success("Տվյալ բաժնի տեքստը հաջողությամբ թարմացվեց:");
+                    setEditModalOpen(false);
+                    setAboutUs(data.data.description_arm);
+                    setTextArm(data.data.description_arm);
+                    setTextEng(data.data.description_eng);
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
 
     return (
@@ -199,38 +137,6 @@ const AboutMe = () => {
                             },
                         }}
                     />
-
-                    <p>Նկար</p>
-                    <div className="about-us-image-wrapper">
-                        <div className="about-us-image-container">
-                            <input
-                                type="file"
-                                id="imageUpload"
-                                accept="image/png, image/jpeg"
-                                onChange={(e) => handleFileChange(e.target)}
-                                className={`${aboutUsImagePreview.length ? "display-none" : ""}`}
-                            />
-                            {aboutUsImagePreview ? (
-                                <img
-                                    src={aboutUsImagePreview}
-                                    alt="About us"
-                                />
-                            ) : (
-                                ""
-                            )}
-                            {aboutUsImagePreview && (
-                                <label
-                                    className="edit-icon-container"
-                                    htmlFor="imageUpload"
-                                >
-                                    <img
-                                        src={IMAGES.editIcon}
-                                        alt="Edit icon"
-                                    />
-                                </label>
-                            )}
-                        </div>
-                    </div>
                 </Modal>
             )}
 
@@ -256,18 +162,8 @@ const AboutMe = () => {
                     </div>
                 )}
             </div>
-            {aboutUs.length || aboutUsImage.length ? (
-                <>
-                    <div dangerouslySetInnerHTML={{ __html: aboutUs }}></div>
-                    <div className="about-us-image-wrapper">
-                        <div className="about-us-image-container">
-                            <img
-                                src={`${ASSETS_URI}/${aboutUsImage}`}
-                                alt="About us"
-                            />
-                        </div>
-                    </div>
-                </>
+            {aboutUs.length ? (
+                <div dangerouslySetInnerHTML={{ __html: aboutUs }}></div>
             ) : pending ? (
                 <div className="loader-container">
                     <RiseLoader

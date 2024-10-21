@@ -152,11 +152,11 @@ const AboutMe = () => {
         <section className="about-us-section">
             {editModalOpen && (
                 <Modal
-                    title={"Խմբագրել"}
+                    title={"Edit"}
                     closeModal={setEditModalOpen}
                     submitModal={handleSubmit}
                 >
-                    <p>Նկարագրություն</p>
+                    <p>Description</p>
                     <div className="tabs-container">
                         {tabs.map((tab, index) => {
                             return (

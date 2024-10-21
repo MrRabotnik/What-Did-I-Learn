@@ -4,7 +4,9 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import IMAGES from "./images";
 import NotFound from "../components/NotFound/NotFound";
 import KnowledgeCatalog from "../components/KnowledgeCatalog/KnowledgeCatalog";
+import AboutMePage from "../pages/AboutMe/AboutMe";
 import AboutMe from "../components/AboutMe/AboutMe";
+import ContactMePage from "../pages/ContactMe/ContactMe";
 import ContactMe from "../components/ContactMe/ContactMe";
 import Settings from "../components/Settings/Settings";
 import Tags from "../components/Tags/Tags";
@@ -18,6 +20,14 @@ const ROUTES = [
     {
         path: "/article/:id",
         element: <ArticlePage />,
+    },
+    {
+        path: "/about-me",
+        element: <AboutMePage />,
+    },
+    {
+        path: "/contact-me",
+        element: <ContactMePage />,
     },
     {
         path: "*",

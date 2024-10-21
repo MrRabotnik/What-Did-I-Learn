@@ -88,6 +88,11 @@ const Aside = () => {
                     <p>No tags found</p>
                 )}
             </ul>
+            <div className="aside-footer">
+                <a href="/about-me">About me</a>
+                <hr />
+                <a href="/contact-me">Contact me</a>
+            </div>
         </aside>
     );
 };

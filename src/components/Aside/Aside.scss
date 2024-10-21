@@ -54,4 +54,14 @@
             }
         }
     }
+
+    .aside-footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        hr {
+            width: 100%;
+        }
+    }
 }

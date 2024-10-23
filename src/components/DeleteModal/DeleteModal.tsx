@@ -60,7 +60,7 @@ const DeleteModal = ({
                 </p>
                 <div className="button-container">
                     <button
-                        className="button"
+                        className="custom-button"
                         onClick={handleDelete}
                     >
                         Ջնջել

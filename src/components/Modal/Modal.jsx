@@ -25,7 +25,7 @@ const Modal = ({ title, closeModal, submitModal, children }) => {
                     {children}
 
                     <button
-                        className="button"
+                        className="custom-button"
                         onClick={submitModal}
                     >
                         Save

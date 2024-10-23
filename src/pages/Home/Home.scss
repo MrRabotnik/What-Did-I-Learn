@@ -11,8 +11,17 @@
             width: 100%;
             margin-bottom: 20px;
             border-radius: 8px;
+            display: flex;
+
+            .container-bg-wrapper {
+                width: 15%;
+                height: 60px;
+                position: relative;
+            }
+
             .input-container {
                 border-radius: 8px;
+                flex-grow: 1;
 
                 .search-input {
                     width: 100%;

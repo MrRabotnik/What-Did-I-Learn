@@ -7,6 +7,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { RiseLoader } from "react-spinners";
 import ReactPaginate from "react-paginate";
 import IMAGES from "../../utils/images";
+import MathLabContainer from "../../components/MathLabContainer/MathLabContainer";
 
 interface Article {
     name: string;
@@ -81,6 +82,9 @@ const Home = () => {
             />
             <div className="article-section">
                 <div className="input-burger-menu-container">
+                    <div className="container-bg-wrapper">
+                        <MathLabContainer />
+                    </div>
                     <div className="input-container">
                         <input
                             type="text"
@@ -103,7 +107,6 @@ const Home = () => {
                         />
                     </div>
                 </div>
-
                 <div className="articles-container">
                     {pending ? (
                         <div className="loader-container">

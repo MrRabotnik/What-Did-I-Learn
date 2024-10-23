@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 import InputRow from "../InputRow/InputRow";
 import Select, { InputActionMeta } from "react-select";
 import checkValidation from "../../validations/article.validation";
+import AnimatedButton from "../AnimatedButton/AnimatedButton";
 
 interface Knowledge {
     name: string;
@@ -296,12 +297,10 @@ const KnowledgeCatalog = () => {
                 <h2>Articles</h2>
             </div>
             <div className="add-new-category-container">
-                <button
-                    onClick={() => setAddModalOpen(true)}
-                    className="button"
-                >
-                    + Add new article
-                </button>
+                <AnimatedButton
+                    text={"Add new article"}
+                    click={() => setAddModalOpen(true)}
+                />
             </div>
             <div className="search-sort-container">
                 <SearchBox

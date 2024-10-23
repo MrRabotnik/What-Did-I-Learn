@@ -146,7 +146,7 @@ const ContactMe = () => {
                     <div className="add-new-category-container">
                         <button
                             onClick={() => setEditModalOpen(true)}
-                            className="button"
+                            className="custom-button"
                         >
                             + Ավելացնել նոր տեքստ
                         </button>

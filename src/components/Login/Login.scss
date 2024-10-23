@@ -62,7 +62,7 @@
                     }
                 }
 
-                .button {
+                .custom-button {
                     width: 100%;
                     border-radius: 25px;
                     text-align: center;
@@ -72,7 +72,7 @@
                     font-size: 16px;
                 }
 
-                .button.disabled {
+                .custom-button.disabled {
                     background-color: $btn-disabled;
                     color: $btn-disabled-text;
                 }

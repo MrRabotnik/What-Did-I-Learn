@@ -4,7 +4,7 @@ import IMAGES from "../../utils/images";
 import "./AsideHeader.scss";
 import { HEADER_ROUTES } from "../../utils/routes";
 
-const AsideHeader = () => {
+const AsideHeader = ({ menuOpen, setMenuOpen }: any) => {
     const { pathname } = useLocation();
 
     const logout = () => {
@@ -12,7 +12,15 @@ const AsideHeader = () => {
     };
 
     return (
-        <aside className="aside-header">
+        <aside className={`aside-header ${menuOpen ? "open" : ""}`}>
+            {menuOpen && (
+                <span
+                    className="close-icon"
+                    onClick={() => setMenuOpen(false)}
+                >
+                    X
+                </span>
+            )}
             <div className="logo-container">
                 <Link to={"/dashboard"}>
                     <img
@@ -42,7 +50,7 @@ const AsideHeader = () => {
                 })}
             </nav>
             <Link
-                to={"/login"}
+                to={"/dashboard/login"}
                 className="log-out-container"
                 onClick={logout}
             >

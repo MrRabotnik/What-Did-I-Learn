@@ -9,6 +9,17 @@
     flex-direction: column;
     justify-content: space-between;
     box-sizing: border-box;
+    position: relative;
+    background-color: white;
+    z-index: 2;
+
+    .close-icon {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        cursor: pointer;
+        font-size: 24px;
+    }
 
     .logo-container {
         display: flex;
@@ -84,6 +95,31 @@
             background-color: $nav-item-hover;
             transition: 0.2s;
             cursor: pointer;
+        }
+    }
+}
+
+@media only screen and (max-width: 769px) {
+    .aside-header {
+        display: none;
+        max-width: unset;
+
+        &.open {
+            display: flex;
+            box-sizing: border-box;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .aside-header {
+        &.open {
+            width: 100%;
         }
     }
 }

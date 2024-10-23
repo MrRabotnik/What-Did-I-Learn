@@ -6,6 +6,7 @@ import Login from "./components/Login/Login";
 import { RiseLoader } from "react-spinners";
 import { ToastContainer } from "react-toastify";
 import AsideHeader from "./components/AsideHeader/AsideHeader";
+import IMAGES from "./utils/images";
 
 interface RouteElement {
     path: string;
@@ -15,6 +16,7 @@ interface RouteElement {
 function App() {
     const { pathname } = useLocation();
     const [pending, setPending] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
         if (pathname === "/dashboard/login") return;
@@ -61,8 +63,20 @@ function App() {
                 </div>
             ) : pathname.startsWith("/dashboard") ? (
                 <>
-                    <AsideHeader />
+                    <AsideHeader
+                        menuOpen={menuOpen}
+                        setMenuOpen={setMenuOpen}
+                    />
                     <div className="wrapper">
+                        <div
+                            className="mobile-burger-menu"
+                            onClick={() => setMenuOpen(true)}
+                        >
+                            <img
+                                src={IMAGES.burgerMenu}
+                                alt="Burger menu"
+                            />
+                        </div>
                         <div className="modal">
                             <Routes>
                                 {ADMIN_ROUTES.map((route: RouteElement, index: number) => {

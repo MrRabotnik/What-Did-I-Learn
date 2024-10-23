@@ -29,12 +29,38 @@ body {
         overflow: auto;
         max-height: 100vh;
 
+        .mobile-burger-menu {
+            display: none;
+
+            img {
+                width: 30px;
+                height: auto;
+            }
+        }
+
         .modal {
             border-radius: 25px;
             background-color: white;
             padding: 15px;
             overflow: auto;
             min-height: 89vh;
+        }
+    }
+}
+
+@media only screen and (max-width: 769px) {
+    .main {
+        .wrapper {
+            padding: 5px;
+
+            .mobile-burger-menu {
+                display: block;
+            }
+
+            .modal {
+                border-radius: 0;
+                padding: 15px;
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ import "./Home.scss";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { RiseLoader } from "react-spinners";
 import ReactPaginate from "react-paginate";
+import IMAGES from "../../utils/images";
 
 interface Article {
     name: string;
@@ -30,6 +31,7 @@ const Home = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [finalSearchTerm, setFinalSearchTerm] = useState("");
     const [pending, setPending] = useState(true);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const generateQuery = useCallback(
         (page: number) => {
@@ -73,19 +75,33 @@ const Home = () => {
 
     return (
         <div className="home">
-            <Aside />
+            <Aside
+                menuOpen={menuOpen}
+                setMenuOpen={setMenuOpen}
+            />
             <div className="article-section">
-                <div className="input-container">
-                    <input
-                        type="text"
-                        placeholder="Search articles..."
-                        value={searchTerm}
-                        onChange={(e) => {
-                            debouncedSearch(e.target.value);
-                            setSearchTerm(e.target.value);
-                        }}
-                        className="search-input"
-                    />
+                <div className="input-burger-menu-container">
+                    <div className="input-container">
+                        <input
+                            type="text"
+                            placeholder="Search articles..."
+                            value={searchTerm}
+                            onChange={(e) => {
+                                debouncedSearch(e.target.value);
+                                setSearchTerm(e.target.value);
+                            }}
+                            className="search-input"
+                        />
+                    </div>
+                    <div
+                        className="mobile-burger-menu"
+                        onClick={() => setMenuOpen(true)}
+                    >
+                        <img
+                            src={IMAGES.burgerMenu}
+                            alt="Burger menu"
+                        />
+                    </div>
                 </div>
 
                 <div className="articles-container">

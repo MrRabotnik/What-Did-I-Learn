@@ -9,7 +9,7 @@ interface Tag {
     _id: string;
 }
 
-const Aside = () => {
+const Aside = ({ menuOpen, setMenuOpen }: any) => {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -57,8 +57,18 @@ const Aside = () => {
     const debouncedSearch = useRef(SearchDebounce(search, 1000)).current;
 
     return (
-        <aside className="aside">
-            <h2 className="aside-title">Wisdom Encyclopedia</h2>
+        <aside className={`aside ${menuOpen ? "open" : ""}`}>
+            {menuOpen && (
+                <span
+                    className="close-icon"
+                    onClick={() => setMenuOpen(false)}
+                >
+                    X
+                </span>
+            )}
+            <h2 className="aside-title">
+                <a href="/dashboard">Wisdom Encyclopedia</a>
+            </h2>
             <input
                 type="text"
                 placeholder="Search tags..."

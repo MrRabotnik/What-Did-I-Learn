@@ -27,6 +27,7 @@ import linkedinIcon from "../assets/svg/linkedin.svg";
 import subscribersIcon from "../assets/svg/subscribers.svg";
 import downloadIcon from "../assets/svg/download.svg";
 import dragAndDropDotsIcon from "../assets/other/drag-and-drop-dots.webp";
+import burgerMenu from "../assets/svg/burger-menu.svg";
 
 export const IMAGES = {
     logo,
@@ -58,6 +59,7 @@ export const IMAGES = {
     subscribersIcon,
     downloadIcon,
     dragAndDropDotsIcon,
+    burgerMenu,
 };
 
 export default IMAGES;

@@ -137,14 +137,14 @@ export default function Login() {
                         {validation ? (
                             <button
                                 type="submit"
-                                className={"button"}
+                                className={"custom-button"}
                             >
                                 Մուտք
                             </button>
                         ) : (
                             <button
                                 type="submit"
-                                className={"button disabled"}
+                                className={"custom-button disabled"}
                             >
                                 Մուտք
                             </button>

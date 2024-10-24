@@ -298,7 +298,7 @@ const KnowledgeCatalog = () => {
             </div>
             <div className="add-new-category-container">
                 <AnimatedButton
-                    text={"Add new article"}
+                    text={"Add new"}
                     click={() => setAddModalOpen(true)}
                 />
             </div>
